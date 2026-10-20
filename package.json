@@ -1,0 +1,35 @@
+{
+  "name": "owasp-agentic-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Hands-on weekend lab: build an agent, break it the way the OWASP Agentic Top 10 says it breaks, then harden it.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "baseline": "tsx scripts/baseline.ts",
+    "attack:01": "tsx scripts/attack-01-goal-hijack.ts",
+    "attack:02": "tsx scripts/attack-02-tool-misuse.ts",
+    "attack:03": "tsx scripts/attack-03-identity.ts",
+    "attack:04": "tsx scripts/attack-04-code-execution.ts",
+    "attack:05": "tsx scripts/attack-05-memory.ts",
+    "attack:all": "npm run attack:01 && npm run attack:02 && npm run attack:03 && npm run attack:04 && npm run attack:05",
+    "check": "vitest run",
+    "check:01": "vitest run tests/lab-01.test.ts",
+    "check:02": "vitest run tests/lab-02.test.ts",
+    "check:03": "vitest run tests/lab-03.test.ts",
+    "check:04": "vitest run tests/lab-04.test.ts",
+    "check:05": "vitest run tests/lab-05.test.ts",
+    "check:capstone": "vitest run tests/capstone.test.ts",
+    "progress": "tsx scripts/progress.ts",
+    "typecheck": "tsc --noEmit",
+    "solution": "tsx scripts/use-solution.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

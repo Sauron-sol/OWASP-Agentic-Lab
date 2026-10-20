@@ -1,0 +1,26 @@
+# Deliberately does NOT run `npm run check`.
+#
+# A fresh clone ships the labs unsolved, so the lab checks are supposed to fail -
+# that is the starting state, not a broken build. This workflow verifies the parts
+# that must always be green: the project typechecks, the baseline agent works, and
+# every attack still runs and still demonstrates its risk.
+name: smoke
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run baseline
+      - run: npm run attack:all

@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.env.local
+.runtime/
+.solution-preview.ts
+*.yours
+
+# The attacker payload's drop box. It lands in the OS temp directory, or inside the
+# sandbox root once you have hardened TMPDIR in lab 04. Neither belongs in git.
+owasp-agentic-lab-dropbox.json
+attacker-dropbox.json
